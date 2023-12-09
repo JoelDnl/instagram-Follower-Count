@@ -8,7 +8,7 @@ def main():
         username, password = f.read().splitlines()
 
     client = Client()
-    client.login(username, password, verification_code="<2F Authentication Number>")
+    client.login(username, password, verification_code="<2FA Numbers>")
     
     # If there is no 2FA, then use this:
     #client.login(username, password)
@@ -43,6 +43,16 @@ def main():
     print("Users I'm following but who don't follow me back:")
     for user_id in not_following_back:
         print(following[user_id].username)
+
+    # Find Non-Verified users you follow who don't follow you back
+    #####################
+    #not_following_back = following_set - followers_set
+    #print("Users I'm following but who don't follow me back:")
+    #for user_id in not_following_back:
+    #    user_info = following[user_id]
+    #    if not user_info.is_verified:
+    #        print(user_info.username)
+    #####################
 
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
